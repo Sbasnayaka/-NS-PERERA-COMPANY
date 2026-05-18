@@ -1009,7 +1009,7 @@ iframe {
 }
 
 .sector-chip {
-  background-color: var(--color-white);
+  background-color: hsla(187, 100%, 79%, 0.188);
   padding: 18px 24px;
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-premium);
@@ -1108,7 +1108,7 @@ iframe {
   justify-content: space-around;
   min-width: 100%;
   gap: 40px;
-  animation: scrollMarquee 30s linear infinite;
+  animation: scrollMarquee 50s linear infinite;
 }
 
 .marquee-content span {
@@ -1125,49 +1125,160 @@ iframe {
 }
 
 /* Service Progress Indicator layout */
+/* =========================
+   DISTRIBUTION SIDE DESIGN
+========================= */
+
+.distribution-wrapper {
+  background: var(--color-white);
+  padding: 38px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top decorative line */
+.distribution-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+}
+
+/* =========================
+   PROGRESS ITEMS
+========================= */
+
 .progress-item {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .progress-label {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-headings);
-  font-size: 0.8rem;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.progress-label span:first-child {
+  max-width: 82%;
+  line-height: 1.5;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .progress-percent {
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 50px;
+  text-align: right;
   color: var(--color-secondary);
 }
 
+/* Progress Bar Background */
 .progress-bar-bg {
-  height: 8px;
-  background-color: rgba(46, 49, 146, 0.08);
-  border-radius: 4px;
-  overflow: hidden;
   width: 100%;
+  height: 10px;
+  background: rgba(46, 49, 146, 0.08);
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
 }
 
+/* Progress Fill */
 .progress-bar-fill {
   height: 100%;
-  width: 0; /* Animated in JS */
-  background-color: var(--color-secondary);
-  border-radius: 4px;
-  transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 0;
+  border-radius: 50px;
+  position: relative;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary),
+    #45b9f5
+  );
 }
 
+/* First Bar Different Color */
 .progress-item:first-of-type .progress-bar-fill {
-  background-color: var(--color-primary);
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    #5055d6
+  );
 }
+
+/* Glow effect */
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+  height: 100%;
+  background: rgba(255,255,255,0.35);
+  filter: blur(6px);
+}
+
+/* =========================
+   BUTTON AREA
+========================= */
 
 .dist-action-wrapper {
   display: flex;
-  gap: 15px;
-  margin-top: 35px;
+  gap: 16px;
+  margin-top: 38px;
+  flex-wrap: wrap;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  .clientele-intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .marquee-wrapper,
+  .distribution-wrapper {
+    padding: 28px 22px;
+  }
+
+  .dist-action-wrapper {
+    flex-direction: column;
+  }
+
+  .dist-action-wrapper .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .progress-label {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .progress-percent {
+    text-align: left;
+  }
+
 }
 
 /*   Managing Partner Spotlight Card  */
@@ -1183,7 +1294,7 @@ iframe {
 }
 
 .partner-avatar-column {
-  background-color: var(--color-light-gray);
+  background-color: #0000001c;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -1697,6 +1808,14 @@ iframe {
   letter-spacing: 0.5px;
 }
 
+.footer-logo-title
+{
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-white);
+  letter-spacing: 0.5px;
+}
 .logo-subtitle {
   font-size: 0.82rem;
   color: var(--color-secondary);
