@@ -173,13 +173,13 @@ iframe {
 
 .btn-style-bordered {
   background-color: transparent;
-  color: var(--color-white);
-  border-color: var(--color-white);
+  color: var(--color-primary);
+  border-color:  var(--color-primary);
 }
 
 .btn-style-bordered:hover {
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
