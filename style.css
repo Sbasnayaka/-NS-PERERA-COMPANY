@@ -1049,7 +1049,7 @@ iframe {
 
 .clientele-intro-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 50px;
   align-items: start;
 }
@@ -1211,13 +1211,18 @@ iframe {
   );
 }
 
-/* First Bar Different Color */
-.progress-item:first-of-type .progress-bar-fill {
+/* Fallback default filled widths */
+.progress-item:nth-of-type(1) .progress-bar-fill {
+  width: 93%;
   background: linear-gradient(
     90deg,
     var(--color-primary),
     #5055d6
   );
+}
+
+.progress-item:nth-of-type(2) .progress-bar-fill {
+  width: 84%;
 }
 
 /* Glow effect */

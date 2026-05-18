@@ -204,22 +204,25 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --------------------------------------------------------------------------
        6. Progress Bars Loading Animation
        -------------------------------------------------------------------------- */
-    const progressFills = document.querySelectorAll('.progress-bar-fill');
+    const progressItems = document.querySelectorAll('.progress-item');
 
     const progressObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const fill = entry.target;
-                const widthValue = fill.getAttribute('data-width');
-                fill.style.width = widthValue + '%';
-                observer.unobserve(fill); // Run once
+                const item = entry.target;
+                const fill = item.querySelector('.progress-bar-fill');
+                if (fill) {
+                    const widthValue = fill.getAttribute('data-width');
+                    fill.style.width = widthValue + '%';
+                }
+                observer.unobserve(item); // Run once
             }
         });
     }, {
-        threshold: 0.5
+        threshold: 0.15
     });
 
-    progressFills.forEach(fill => progressObserver.observe(fill));
+    progressItems.forEach(item => progressObserver.observe(item));
 
 
     /* --------------------------------------------------------------------------
