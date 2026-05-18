@@ -865,6 +865,7 @@ iframe {
   transform: translateY(-10px);
   box-shadow: var(--shadow-card-hover);
   border-bottom-color: var(--color-secondary);
+  background-color: #0454ff1c;
 }
 
 .service-header {
